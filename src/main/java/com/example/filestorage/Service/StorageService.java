@@ -31,14 +31,17 @@ public class StorageService {
         if (!targetDirectory.startsWith(STORAGE_ROOT)) {
             throw new IllegalArgumentException("Project name is invalid");
         }
-
+        System.out.println("1");
         Files.createDirectories(targetDirectory);
+        System.out.println("2");
         Path targetFile = targetDirectory.resolve(storedFileName).normalize();
+        System.out.println("3");
         try (InputStream inputStream = file.getInputStream()) {
             Files.copy(inputStream, targetFile, StandardCopyOption.REPLACE_EXISTING);
         }
-
+        System.out.println("4");
         FileSaveDetails fileSaveDetails = new FileSaveDetails();
+        System.out.println("5");
         fileSaveDetails.setPath(PUBLIC_ROOT + "/" + normalizedPath + "/" + storedFileName);
         return fileSaveDetails;
     }
